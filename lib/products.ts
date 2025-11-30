@@ -32,7 +32,6 @@ export const products: Product[] = [
     gallery: [
       "/images/panoramic-home-lift/panoramic-home-lift-1.jpg",
       "/images/panoramic-home-lift/panoramic-home-lift-2.jpg",
-      "/images/panoramic-home-lift/paoaramic-home-lift-3.jpg",
     ],
     videos: [
       "/images/panoramic-home-lift/Khyabane-rahat.mp4",

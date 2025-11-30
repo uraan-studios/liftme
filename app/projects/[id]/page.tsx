@@ -3,16 +3,19 @@
 import { projects } from "@/lib/projects"
 import Image from "next/image"
 import Link from "next/link"
-import { ProductGallery } from "@/components/product-gallery"
+import { ProjectGallery } from "@/components/project-gallery"
+import { ProjectCard } from "@/components/project-card"
 import { ArrowLeft, MapPin, User, Calendar, Check, ChevronRight } from "lucide-react"
 import { motion } from "motion/react"
+import { use } from "react"
 
 interface ProjectPageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects.find((p) => p.id === Number(params.id))
+  const { id } = use(params)
+  const project = projects.find((p) => p.id === Number(id))
 
   if (!project) {
     return (
@@ -26,6 +29,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </div>
     )
   }
+
+  const relatedProjects = projects
+    .filter((p) => p.category === project.category && p.id !== project.id)
+    .slice(0, 3)
 
   return (
     <div className="min-h-screen bg-gray-50/50 py-20">
@@ -130,7 +137,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               transition={{ duration: 0.5 }}
             >
               {(project.gallery && project.gallery.length > 0) || (project.videos && project.videos.length > 0) ? (
-                <ProductGallery images={project.gallery || []} videos={project.videos || []} />
+                <ProjectGallery images={project.gallery || []} videos={project.videos || []} />
               ) : (
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
                   <Image
@@ -144,6 +151,18 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </motion.div>
           </div>
         </div>
+
+        {/* Related Projects */}
+        {relatedProjects.length > 0 && (
+          <div className="mt-24 border-t border-gray-200 pt-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Other Related Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {relatedProjects.map((relatedProject) => (
+                <ProjectCard key={relatedProject.id} project={relatedProject} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

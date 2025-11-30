@@ -42,21 +42,21 @@ export default function ProductsPage() {
       {/* Filters */}
       <section className="py-8 bg-white border-b">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-2 w-full sm:w-auto sm:pb-0 sm:flex-wrap no-scrollbar mask-gradient-right sm:mask-none">
             {filters.map((filter) => (
               <Button
                 key={filter}
                 variant={selectedFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedFilter(filter)}
-                className={selectedFilter === filter ? "lift-gradient text-white" : ""}
+                className={selectedFilter === filter ? "lift-gradient text-white flex-shrink-0" : "flex-shrink-0"}
               >
                 {filter}
               </Button>
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="md:flex items-center gap-2 hidden">
             <Button
               variant={viewMode === "grid" ? "default" : "outline"}
               size="sm"

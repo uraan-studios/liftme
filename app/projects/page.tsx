@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { motion } from "motion/react"
 import { Button } from "@/components/ui/button"
@@ -40,21 +41,21 @@ export default function ProjectsPage() {
       {/* Filters & View Toggle */}
       <section className="py-8 bg-white border-b sticky top-16 z-10 shadow-sm">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+          <div className="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto md:pb-0 md:flex-wrap no-scrollbar mask-gradient-right md:mask-none justify-start md:justify-start">
             {filters.map((filter) => (
               <Button
                 key={filter}
                 variant={selectedFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedFilter(filter)}
-                className={selectedFilter === filter ? "lift-gradient text-white" : ""}
+                className={selectedFilter === filter ? "lift-gradient text-white flex-shrink-0" : "flex-shrink-0"}
               >
                 {filter}
               </Button>
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
             <Button
               variant={viewMode === "grid" ? "default" : "outline"}
               size="sm"
@@ -86,7 +87,9 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <ProjectCard project={project} viewMode={viewMode} />
+                <Link href={`/projects/${project.id}`}>
+                  <ProjectCard project={project} viewMode={viewMode} />
+                </Link>
               </motion.div>
             ))}
           </div>

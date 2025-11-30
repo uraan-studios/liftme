@@ -4,15 +4,18 @@ import { products } from "@/lib/products"
 import Image from "next/image"
 import Link from "next/link"
 import { ProductGallery } from "@/components/product-gallery"
+import { ProductCard } from "@/components/product-card"
 import { ArrowLeft, Check, Zap, Maximize, Gauge, Weight, ChevronRight } from "lucide-react"
 import { motion } from "motion/react"
+import { use } from "react"
 
 interface ProductPageProps {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const product = products.find((p) => p.id === Number(params.id))
+  const { id } = use(params)
+  const product = products.find((p) => p.id === Number(id))
 
   if (!product) {
     return (
@@ -152,6 +155,21 @@ export default function ProductPage({ params }: ProductPageProps) {
                 </ul>
               </motion.div>
             )}
+          </div>
+        </div>
+
+        {/* Related Products */}
+        <div className="mt-20 border-t pt-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products
+              .filter((p) => p.id !== product.id)
+              .slice(0, 3)
+              .map((relatedProduct) => (
+                <Link key={relatedProduct.id} href={`/products/${relatedProduct.id}`}>
+                  <ProductCard product={relatedProduct} viewMode="grid" />
+                </Link>
+              ))}
           </div>
         </div>
       </div>

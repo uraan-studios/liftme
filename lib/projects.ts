@@ -45,7 +45,7 @@ export const projects: Project[] = [
     location: "Pakistan",
     image: "/images/platform-lift/image.jpg",
     gallery: [],
-    videos: ["/images/platform-lift/Platform - PN Com.mp4"]
+    videos: ["/images/platform-lift/Platform-PN-Com.mp4"]
   },
   {
     id: 4,
@@ -203,6 +203,6 @@ export const projects: Project[] = [
     location: "Baloch Colony, Karachi",
     image: "/images/space-less-lift/Spaceless.jpg",
     gallery: [],
-    videos: ["/images/space-less-lift/Spaceless Lift.mp4"]
+    videos: ["/images/space-less-lift/Spaceless-Lift.mp4"]
   },
 ]

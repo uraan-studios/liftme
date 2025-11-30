@@ -5,12 +5,12 @@ import Image from "next/image"
 import { Play } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-interface ProductGalleryProps {
+interface ProjectGalleryProps {
   images: string[]
   videos?: string[]
 }
 
-export function ProductGallery({ images, videos = [] }: ProductGalleryProps) {
+export function ProjectGallery({ images, videos = [] }: ProjectGalleryProps) {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
   const [isOpen, setIsOpen] = React.useState(false)
 
@@ -26,9 +26,9 @@ export function ProductGallery({ images, videos = [] }: ProductGalleryProps) {
 
   return (
     <div className="space-y-4">
-      {/* Main View - 4:3 Aspect Ratio for Products */}
+      {/* Main View - 9:16 Aspect Ratio */}
       <div 
-        className="relative w-full aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden shadow-lg cursor-zoom-in group"
+        className="relative w-full max-w-md mx-auto aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-2xl cursor-zoom-in group"
         onClick={() => setIsOpen(true)}
       >
         {selectedSlide.type === 'image' ? (
@@ -58,7 +58,7 @@ export function ProductGallery({ images, videos = [] }: ProductGalleryProps) {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex gap-3 overflow-x-auto pb-4 px-2 snap-x justify-start">
+      <div className="flex gap-3 overflow-x-auto pb-4 px-2 snap-x justify-center">
         {slides.map((slide, i) => (
           <button
             key={i}

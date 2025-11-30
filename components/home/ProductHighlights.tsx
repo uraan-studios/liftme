@@ -80,8 +80,8 @@ export function ProductHighlights() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden">
-                <div className="relative overflow-hidden">
+              <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden h-full flex flex-col">
+                <Link href={`/products/${product.id}`} className="relative overflow-hidden block">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
@@ -94,9 +94,9 @@ export function ProductHighlights() {
                       <product.icon className="w-5 h-5 text-blue-600" />
                     </div>
                   </div>
-                </div>
+                </Link>
 
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-1">
                   <div className="flex flex-wrap gap-2 mb-3">
                     {product.features.map((feature) => (
                       <Badge key={feature} variant="secondary" className="text-xs">
@@ -105,17 +105,18 @@ export function ProductHighlights() {
                     ))}
                   </div>
 
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
+                  <Link href={`/products/${product.id}`} className="block">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors">{product.name}</h3>
+                  </Link>
 
-                  <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
+                  <p className="text-gray-600 mb-4 text-sm flex-1">{product.description}</p>
 
                   <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
                     <span>Capacity: {product.capacity}</span>
                     <span>Install: {product.installTime}</span>
                   </div>
 
-                  {/* ✅ Updated button to link to /products */}
-                  <Link href="/products" className="block">
+                  <Link href={`/products/${product.id}`} className="block mt-auto">
                     <Button
                       variant="outline"
                       className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors bg-transparent"

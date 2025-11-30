@@ -132,7 +132,7 @@ export function HeroBanner() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/liftme-cover.jpg"
+                src="/hero.jpg"
                 alt="Elderly person using LiftMe home lift with family support"
                 width={1200}
                 height={800}
