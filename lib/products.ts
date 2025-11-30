@@ -12,6 +12,7 @@ export type Product = {
   tags: string[]
   image: string
   gallery?: string[]
+  videos?: string[]
 }
 
 export const products: Product[] = [
@@ -33,6 +34,13 @@ export const products: Product[] = [
       "/images/panoramic-home-lift/panoramic-home-lift-2.jpg",
       "/images/panoramic-home-lift/paoaramic-home-lift-3.jpg",
     ],
+    videos: [
+      "/images/panoramic-home-lift/Khyabane-rahat.mp4",
+      "/images/panoramic-home-lift/Panoramic-cabin.mp4",
+      "/images/panoramic-home-lift/former-homelift.mp4",
+      "/images/panoramic-home-lift/oldhome.mp4",
+      "/images/panoramic-home-lift/rangers.mp4",
+    ]
   },
   {
     id: 2,
@@ -53,6 +61,10 @@ export const products: Product[] = [
       "/images/capsule-home-lift/capsule-home-lift-3.jpg",
       
     ],
+    videos: [
+      "/images/capsule-home-lift/capsule.mp4",
+      "/images/capsule-home-lift/malir-capsule.mp4",
+    ]
   },
   {
     id: 3,
@@ -112,6 +124,9 @@ export const products: Product[] = [
     "/images/space-less-lift/space-less-lift-2.jpg",
    
   ],
+  videos: [
+    "/images/space-less-lift/Spaceless Lift.mp4"
+  ]
 },
 {
   id: 6,
@@ -130,6 +145,9 @@ export const products: Product[] = [
     "/images/platform-lift/platform-lift-1.jpg",
     "/images/platform-lift/platform-lift-2.jpg",
     "/images/platform-lift/platform-lift-3.jpg"
+  ],
+  videos: [
+    "/images/platform-lift/Platform - PN Com.mp4"
   ]
 }
 ]
